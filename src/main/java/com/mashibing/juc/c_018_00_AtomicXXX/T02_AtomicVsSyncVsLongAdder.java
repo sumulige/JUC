@@ -4,18 +4,31 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.LongAdder;
 
+/**
+ * 对一个数进行递增测试
+ * 分三个方法测试
+ * Atomic: 100000000 time 1886
+ * Sync: 100000000 time 3340
+ * LongAdder: 100000000 time 419
+ */
 public class T02_AtomicVsSyncVsLongAdder {
+    //申请重量锁 可能费时间要长点
     static long count2 = 0L;
+
     static AtomicLong count1 = new AtomicLong(0L);
+
+
+    //适用线程较多优势大
+    //分段锁
     static LongAdder count3 = new LongAdder();
 
     public static void main(String[] args) throws Exception {
         Thread[] threads = new Thread[1000];
 
-        for(int i=0; i<threads.length; i++) {
+        for (int i = 0; i < threads.length; i++) {
             threads[i] =
-                    new Thread(()-> {
-                        for(int k=0; k<100000; k++) count1.incrementAndGet();
+                    new Thread(() -> {
+                        for (int k = 0; k < 100000; k++) count1.incrementAndGet();
                     });
         }
 
@@ -30,21 +43,23 @@ public class T02_AtomicVsSyncVsLongAdder {
         //TimeUnit.SECONDS.sleep(10);
 
         System.out.println("Atomic: " + count1.get() + " time " + (end-start));
+
+
         //-----------------------------------------------------------
         Object lock = new Object();
 
         for(int i=0; i<threads.length; i++) {
             threads[i] =
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
 
-                        for (int k = 0; k < 100000; k++)
-                            synchronized (lock) {
-                                count2++;
-                            }
-                    }
-                });
+                            for (int k = 0; k < 100000; k++)
+                                synchronized (lock) {
+                                    count2++;
+                                }
+                        }
+                    });
         }
 
         start = System.currentTimeMillis();

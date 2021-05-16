@@ -10,9 +10,10 @@ import java.util.List;
 
 public class T04_VolatileNotSync {
 	volatile int count = 0;
-	void m() {
-		for(int i=0; i<10000; i++) count++;
-	}
+//	int count = 0;
+void m() {
+	for(int i=0; i<10000; i++) count++;
+}
 	
 	public static void main(String[] args) {
 		T04_VolatileNotSync t = new T04_VolatileNotSync();

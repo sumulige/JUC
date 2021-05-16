@@ -13,6 +13,7 @@ public class HelloUnsafe {
 
    public static void main(String[] args) throws InstantiationException {
         Unsafe unsafe = Unsafe.getUnsafe();
+//       System.out.println(unsafe.);
         M m = (M)unsafe.allocateInstance(M.class);
         m.i = 9;
         System.out.println(m.i);

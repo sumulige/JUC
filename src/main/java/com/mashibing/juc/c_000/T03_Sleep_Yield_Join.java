@@ -21,6 +21,7 @@ public class T03_Sleep_Yield_Join {
         }).start();
     }
 
+    //打乱当前排队线程进行重新排序 应用场景比较zhai
     static void testYield() {
         new Thread(()->{
             for(int i=0; i<100; i++) {

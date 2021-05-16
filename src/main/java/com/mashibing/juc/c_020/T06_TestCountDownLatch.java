@@ -2,6 +2,7 @@ package com.mashibing.juc.c_020;
 
 import java.util.concurrent.CountDownLatch;
 
+//CountDownLatch 倒数的门栓
 public class T06_TestCountDownLatch {
     public static void main(String[] args) {
         usingJoin();
@@ -13,9 +14,13 @@ public class T06_TestCountDownLatch {
         CountDownLatch latch = new CountDownLatch(threads.length);
 
         for(int i=0; i<threads.length; i++) {
-            threads[i] = new Thread(()->{
+            threads[i] = new Thread(()-> {
                 int result = 0;
-                for(int j=0; j<10000; j++) result += j;
+                for (int j = 0; j < 10000; j++) result += j;
+                //有个一个线程结束减1 类似人满就走
+                //await阻塞的
+                //本身就是原子
+                //线程结束才会调这个方法
                 latch.countDown();
             });
         }

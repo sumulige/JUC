@@ -22,6 +22,8 @@ public class T03_ReentrantLock3 {
 	void m1() {
 		try {
 			lock.lock();
+			//执行十秒 第二个5s内肯定拿不到
+//			for (int i = 0; i < 10; i++) {
 			for (int i = 0; i < 3; i++) {
 				TimeUnit.SECONDS.sleep(1);
 
@@ -49,6 +51,7 @@ public class T03_ReentrantLock3 {
 		boolean locked = false;
 		
 		try {
+			//申请5s得到这把锁
 			locked = lock.tryLock(5, TimeUnit.SECONDS);
 			System.out.println("m2 ..." + locked);
 		} catch (InterruptedException e) {

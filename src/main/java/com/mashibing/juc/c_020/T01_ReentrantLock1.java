@@ -28,12 +28,13 @@ public class T01_ReentrantLock1 {
 	
 	public static void main(String[] args) {
 		T01_ReentrantLock1 rl = new T01_ReentrantLock1();
+		//每一秒睡一次 打印十次
 		new Thread(rl::m1).start();
 		try {
 			TimeUnit.SECONDS.sleep(1);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		//new Thread(rl::m2).start();
+		new Thread(rl::m2).start();
 	}
 }

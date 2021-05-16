@@ -19,7 +19,6 @@ package com.mashibing.juc.c_020;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-import java.util.function.Function;
 
 public class T04_ReentrantLock4 {
 		
@@ -31,6 +30,7 @@ public class T04_ReentrantLock4 {
 			try {
 				lock.lock();
 				System.out.println("t1 start");
+				//没完没了的睡
 				TimeUnit.SECONDS.sleep(Integer.MAX_VALUE);
 				System.out.println("t1 end");
 			} catch (InterruptedException e) {
@@ -44,6 +44,7 @@ public class T04_ReentrantLock4 {
 		Thread t2 = new Thread(()->{
 			try {
 				//lock.lock();
+				//线程1没完没了的睡
 				lock.lockInterruptibly(); //可以对interrupt()方法做出响应
 				System.out.println("t2 start");
 				TimeUnit.SECONDS.sleep(5);

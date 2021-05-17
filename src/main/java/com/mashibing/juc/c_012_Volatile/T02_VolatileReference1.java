@@ -14,7 +14,7 @@ public class T02_VolatileReference1 {
 
     void m() {
         System.out.println("m start");
-        while(running) {
+        while (running) {
 			/*
 			try {
 				TimeUnit.MILLISECONDS.sleep(10);

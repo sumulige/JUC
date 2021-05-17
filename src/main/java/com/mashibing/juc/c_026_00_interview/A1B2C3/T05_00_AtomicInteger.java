@@ -17,7 +17,8 @@ public class T05_00_AtomicInteger {
         new Thread(() -> {
 
             for (char c : aI) {
-                while (threadNo.get() != 1) {}
+                while (threadNo.get() != 1) {
+                }
                 System.out.print(c);
                 threadNo.set(2);
             }
@@ -27,7 +28,8 @@ public class T05_00_AtomicInteger {
         new Thread(() -> {
 
             for (char c : aC) {
-                while (threadNo.get() != 2) {}
+                while (threadNo.get() != 2) {
+                }
                 System.out.print(c);
                 threadNo.set(1);
             }

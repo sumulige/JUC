@@ -8,18 +8,15 @@ import java.nio.ByteBuffer;
 
 public class Main {
 
-    public static void handleEvent(LongEvent event, long sequence, boolean endOfBatch)
-    {
+    public static void handleEvent(LongEvent event, long sequence, boolean endOfBatch) {
         System.out.println(event);
     }
 
-    public static void translate(LongEvent event, long sequence, ByteBuffer buffer)
-    {
+    public static void translate(LongEvent event, long sequence, ByteBuffer buffer) {
         event.setValue(buffer.getLong(0));
     }
 
-    public static void main(String[] args) throws Exception
-    {
+    public static void main(String[] args) throws Exception {
         // Specify the size of the ring buffer, must be power of 2.
         int bufferSize = 1024;
 
@@ -36,8 +33,7 @@ public class Main {
         RingBuffer<LongEvent> ringBuffer = disruptor.getRingBuffer();
 
         ByteBuffer bb = ByteBuffer.allocate(8);
-        for (long l = 0; true; l++)
-        {
+        for (long l = 0; true; l++) {
             bb.putLong(0, l);
             ringBuffer.publishEvent(Main::translate, bb);
             Thread.sleep(1000);

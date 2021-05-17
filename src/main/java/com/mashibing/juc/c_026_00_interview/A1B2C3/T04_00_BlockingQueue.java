@@ -3,7 +3,6 @@ package com.mashibing.juc.c_026_00_interview.A1B2C3;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.locks.LockSupport;
 
 public class T04_00_BlockingQueue {
 
@@ -17,7 +16,7 @@ public class T04_00_BlockingQueue {
 
         new Thread(() -> {
 
-            for(char c : aI) {
+            for (char c : aI) {
                 System.out.print(c);
                 try {
                     q1.put("ok");
@@ -31,7 +30,7 @@ public class T04_00_BlockingQueue {
 
         new Thread(() -> {
 
-            for(char c : aC) {
+            for (char c : aC) {
                 try {
                     q1.take();
                 } catch (InterruptedException e) {

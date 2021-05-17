@@ -9,7 +9,7 @@ public class T11_TestSemaphore {
         //允许一个线程同时执行
         //Semaphore s = new Semaphore(1);
 
-        new Thread(()->{
+        new Thread(() -> {
             try {
                 s.acquire();
 
@@ -24,7 +24,7 @@ public class T11_TestSemaphore {
             }
         }).start();
 
-        new Thread(()->{
+        new Thread(() -> {
             try {
                 s.acquire();
 

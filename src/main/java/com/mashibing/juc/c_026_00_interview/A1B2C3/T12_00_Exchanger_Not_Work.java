@@ -9,8 +9,8 @@ public class T12_00_Exchanger_Not_Work {
         char[] aI = "1234567".toCharArray();
         char[] aC = "ABCDEFG".toCharArray();
 
-        new Thread(()->{
-            for(int i=0; i<aI.length; i++) {
+        new Thread(() -> {
+            for (int i = 0; i < aI.length; i++) {
                 System.out.print(aI[i]);
                 try {
                     exchanger.exchange("T1");
@@ -20,8 +20,8 @@ public class T12_00_Exchanger_Not_Work {
             }
         }).start();
 
-        new Thread(()->{
-            for(int i=0; i<aC.length; i++) {
+        new Thread(() -> {
+            for (int i = 0; i < aC.length; i++) {
                 try {
                     exchanger.exchange("T2");
                 } catch (InterruptedException e) {

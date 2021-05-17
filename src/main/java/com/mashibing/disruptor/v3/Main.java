@@ -1,12 +1,10 @@
 package com.mashibing.disruptor.v3;
 
-import com.lmax.disruptor.EventHandler;
 import com.lmax.disruptor.RingBuffer;
 import com.lmax.disruptor.dsl.Disruptor;
 import com.lmax.disruptor.util.DaemonThreadFactory;
 
 import java.nio.ByteBuffer;
-import java.util.concurrent.Executors;
 
 public class Main {
     public static void main(String[] args) {
@@ -25,8 +23,7 @@ public class Main {
         RingBuffer<LongEvent> ringBuffer = disruptor.getRingBuffer();
 
         ByteBuffer bb = ByteBuffer.allocate(8);
-        for (long l = 0; true; l++)
-        {
+        for (long l = 0; true; l++) {
             bb.putLong(0, l);
             ringBuffer.publishEvent((event, sequence, buffer) -> event.setValue(buffer.getLong(0)), bb);
 

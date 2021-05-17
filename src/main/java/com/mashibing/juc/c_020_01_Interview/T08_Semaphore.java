@@ -3,7 +3,6 @@ package com.mashibing.juc.c_020_01_Interview;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Semaphore;
-import java.util.concurrent.locks.LockSupport;
 
 public class T08_Semaphore {
     // 添加volatile，使t2能够得到通知

@@ -17,17 +17,18 @@ public class T03________VolatileReference2 {
     volatile static Data data;
 
     public static void main(String[] args) {
-        Thread writer = new Thread(()->{
+        Thread writer = new Thread(() -> {
             for (int i = 0; i < 10000; i++) {
                 data = new Data(i, i);
             }
         });
 
-        Thread reader = new Thread(()->{
-            while (data == null) {}
+        Thread reader = new Thread(() -> {
+            while (data == null) {
+            }
             int x = data.a;
             int y = data.b;
-            if(x != y) {
+            if (x != y) {
                 System.out.printf("a = %s, b=%s%n", x, y);
             }
         });

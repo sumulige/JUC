@@ -16,7 +16,7 @@ public class T01_Future {
 
     public static void main(String[] args) throws Exception {
         ExecutorService service = Executors.newCachedThreadPool();
-        Future<Integer> future = service.submit(()->{
+        Future<Integer> future = service.submit(() -> {
             return 8;
         });
 

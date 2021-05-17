@@ -13,8 +13,8 @@ public class T06_TestCountDownLatch {
         Thread[] threads = new Thread[100];
         CountDownLatch latch = new CountDownLatch(threads.length);
 
-        for(int i=0; i<threads.length; i++) {
-            threads[i] = new Thread(()-> {
+        for (int i = 0; i < threads.length; i++) {
+            threads[i] = new Thread(() -> {
                 int result = 0;
                 for (int j = 0; j < 10000; j++) result += j;
                 //每个一个线程结束减1 类似人满就走
@@ -42,10 +42,10 @@ public class T06_TestCountDownLatch {
     private static void usingJoin() {
         Thread[] threads = new Thread[100];
 
-        for(int i=0; i<threads.length; i++) {
-            threads[i] = new Thread(()->{
+        for (int i = 0; i < threads.length; i++) {
+            threads[i] = new Thread(() -> {
                 int result = 0;
-                for(int j=0; j<10000; j++) result += j;
+                for (int j = 0; j < 10000; j++) result += j;
             });
         }
 

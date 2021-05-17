@@ -1,6 +1,5 @@
 package com.mashibing.disruptor.v2;
 
-import com.lmax.disruptor.EventTranslator;
 import com.lmax.disruptor.EventTranslatorOneArg;
 import com.lmax.disruptor.RingBuffer;
 

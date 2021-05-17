@@ -7,7 +7,7 @@ public class T04_ThreadState {
         public void run() {
             System.out.println(this.getState());
 
-            for(int i=0; i<10; i++) {
+            for (int i = 0; i < 10; i++) {
                 try {
                     Thread.sleep(500);
                 } catch (InterruptedException e) {

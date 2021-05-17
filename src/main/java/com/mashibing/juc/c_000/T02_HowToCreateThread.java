@@ -18,7 +18,7 @@ public class T02_HowToCreateThread {
     public static void main(String[] args) {
         new MyThread().start();
         new Thread(new MyRun()).start();
-        new Thread(()->{
+        new Thread(() -> {
             System.out.println("Hello Lambda!");
         }).start();
     }

@@ -21,7 +21,7 @@ public class T01_TestHashtable {
 
     static class MyThread extends Thread {
         int start;
-        int gap = count/THREAD_COUNT;
+        int gap = count / THREAD_COUNT;
 
         public MyThread(int start) {
             this.start = start;
@@ -29,7 +29,7 @@ public class T01_TestHashtable {
 
         @Override
         public void run() {
-            for(int i=start; i<start+gap; i++) {
+            for (int i = start; i < start + gap; i++) {
                 m.put(keys[i], values[i]);
             }
         }
@@ -41,16 +41,16 @@ public class T01_TestHashtable {
 
         Thread[] threads = new Thread[THREAD_COUNT];
 
-        for(int i=0; i<threads.length; i++) {
+        for (int i = 0; i < threads.length; i++) {
             threads[i] =
-            new MyThread(i * (count/THREAD_COUNT));
+                    new MyThread(i * (count / THREAD_COUNT));
         }
 
-        for(Thread t : threads) {
+        for (Thread t : threads) {
             t.start();
         }
 
-        for(Thread t : threads) {
+        for (Thread t : threads) {
             try {
                 t.join();
             } catch (InterruptedException e) {
@@ -67,18 +67,18 @@ public class T01_TestHashtable {
 
         start = System.currentTimeMillis();
         for (int i = 0; i < threads.length; i++) {
-            threads[i] = new Thread(()->{
+            threads[i] = new Thread(() -> {
                 for (int j = 0; j < 10000000; j++) {
                     m.get(keys[10]);
                 }
             });
         }
 
-        for(Thread t : threads) {
+        for (Thread t : threads) {
             t.start();
         }
 
-        for(Thread t : threads) {
+        for (Thread t : threads) {
             try {
                 t.join();
             } catch (InterruptedException e) {

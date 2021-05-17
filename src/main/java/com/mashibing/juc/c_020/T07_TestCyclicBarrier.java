@@ -27,7 +27,7 @@ public class T07_TestCyclicBarrier {
 
         for (int i = 0; i < 100; i++) {
 
-            new Thread(()->{
+            new Thread(() -> {
                 try {
                     barrier.await();
 

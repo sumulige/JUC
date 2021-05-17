@@ -22,7 +22,7 @@ public class T09_TestPhaser2 {
         //最开始是七个人在参加 也就是7个线程
         phaser.bulkRegister(7);
 
-        for(int i=0; i<5; i++) {
+        for (int i = 0; i < 5; i++) {
 
             new Thread(new Person("p" + i)).start();
         }
@@ -33,10 +33,9 @@ public class T09_TestPhaser2 {
     }
 
 
-
     static class MarriagePhaser extends Phaser {
         @Override
-        protected boolean onAdvance(int phase, int registeredParties) {
+        protected boolean onAdvance(int phase/**/, int registeredParties) {
 
             //共分4个线程
             switch (phase) {
@@ -91,7 +90,7 @@ public class T09_TestPhaser2 {
         }
 
         private void hug() {
-            if(name.equals("新郎") || name.equals("新娘")) {
+            if (name.equals("新郎") || name.equals("新娘")) {
                 milliSleep(r.nextInt(1000));
                 System.out.printf("%s 洞房！\n", name);
                 phaser.arriveAndAwaitAdvance();

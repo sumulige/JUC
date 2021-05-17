@@ -10,7 +10,7 @@ public class TestReentrantLock {
         ReentrantLock lock = new ReentrantLock();
         lock.lock();
         //synchronized (TestReentrantLock.class) {
-            i++;
+        i++;
         //}
 
         lock.unlock();

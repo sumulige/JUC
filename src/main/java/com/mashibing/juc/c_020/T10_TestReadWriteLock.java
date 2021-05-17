@@ -1,7 +1,6 @@
 package com.mashibing.juc.c_020;
 
 import java.util.Random;
-import java.util.concurrent.atomic.LongAdder;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -43,18 +42,15 @@ public class T10_TestReadWriteLock {
     }
 
 
-
-
-
     public static void main(String[] args) {
         //Runnable readR = ()-> read(lock);
-        Runnable readR = ()-> read(readLock);
+        Runnable readR = () -> read(readLock);
 
         //Runnable writeR = ()->write(lock, new Random().nextInt());
-        Runnable writeR = ()->write(writeLock, new Random().nextInt());
+        Runnable writeR = () -> write(writeLock, new Random().nextInt());
 
-        for(int i=0; i<18; i++) new Thread(readR).start();
-        for(int i=0; i<2; i++) new Thread(writeR).start();
+        for (int i = 0; i < 18; i++) new Thread(readR).start();
+        for (int i = 0; i < 2; i++) new Thread(writeR).start();
 
 
     }

@@ -8,8 +8,8 @@ public class T03_Sleep_Yield_Join {
     }
 
     static void testSleep() {
-        new Thread(()->{
-            for(int i=0; i<100; i++) {
+        new Thread(() -> {
+            for (int i = 0; i < 100; i++) {
                 System.out.println("A" + i);
                 try {
                     Thread.sleep(500);
@@ -23,26 +23,26 @@ public class T03_Sleep_Yield_Join {
 
     //打乱当前排队线程进行重新排序 应用场景比较zhai
     static void testYield() {
-        new Thread(()->{
-            for(int i=0; i<100; i++) {
+        new Thread(() -> {
+            for (int i = 0; i < 100; i++) {
                 System.out.println("A" + i);
-                if(i%10 == 0) Thread.yield();
+                if (i % 10 == 0) Thread.yield();
 
 
             }
         }).start();
 
-        new Thread(()->{
-            for(int i=0; i<100; i++) {
+        new Thread(() -> {
+            for (int i = 0; i < 100; i++) {
                 System.out.println("------------B" + i);
-                if(i%10 == 0) Thread.yield();
+                if (i % 10 == 0) Thread.yield();
             }
         }).start();
     }
 
     static void testJoin() {
-        Thread t1 = new Thread(()->{
-            for(int i=0; i<100; i++) {
+        Thread t1 = new Thread(() -> {
+            for (int i = 0; i < 100; i++) {
                 System.out.println("A" + i);
                 try {
                     Thread.sleep(500);
@@ -53,7 +53,7 @@ public class T03_Sleep_Yield_Join {
             }
         });
 
-        Thread t2 = new Thread(()->{
+        Thread t2 = new Thread(() -> {
 
             try {
                 t1.join();
@@ -61,7 +61,7 @@ public class T03_Sleep_Yield_Join {
                 e.printStackTrace();
             }
 
-            for(int i=0; i<100; i++) {
+            for (int i = 0; i < 100; i++) {
                 System.out.println("A" + i);
                 try {
                     Thread.sleep(500);

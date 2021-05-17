@@ -15,11 +15,11 @@ public class T08_00_lock_condition {
         Lock lock = new ReentrantLock();
         Condition condition = lock.newCondition();
 
-        new Thread(()->{
+        new Thread(() -> {
             try {
                 lock.lock();
 
-                for(char c : aI) {
+                for (char c : aI) {
                     System.out.print(c);
                     condition.signal();
                     condition.await();
@@ -35,11 +35,11 @@ public class T08_00_lock_condition {
 
         }, "t1").start();
 
-        new Thread(()->{
+        new Thread(() -> {
             try {
                 lock.lock();
 
-                for(char c : aC) {
+                for (char c : aC) {
                     System.out.print(c);
                     condition.signal();
                     condition.await();

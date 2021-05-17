@@ -19,11 +19,11 @@ public class T09_00_lock_condition {
         Condition conditionT1 = lock.newCondition();
         Condition conditionT2 = lock.newCondition();
 
-        new Thread(()->{
+        new Thread(() -> {
             try {
                 lock.lock();
 
-                for(char c : aI) {
+                for (char c : aI) {
                     System.out.print(c);
                     conditionT2.signal();
                     conditionT1.await();
@@ -39,11 +39,11 @@ public class T09_00_lock_condition {
 
         }, "t1").start();
 
-        new Thread(()->{
+        new Thread(() -> {
             try {
                 lock.lock();
 
-                for(char c : aC) {
+                for (char c : aC) {
                     System.out.print(c);
                     conditionT1.signal();
                     conditionT2.await();

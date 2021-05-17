@@ -25,9 +25,9 @@ public class T08_TestPhaser {
 
         phaser.bulkRegister(5);
 
-        for(int i=0; i<5; i++) {
+        for (int i = 0; i < 5; i++) {
             final int nameIndex = i;
-            new Thread(()->{
+            new Thread(() -> {
 
                 Person p = new Person("person " + nameIndex);
                 p.arrive();
@@ -46,6 +46,7 @@ public class T08_TestPhaser {
 
     static class MarriagePhaser extends Phaser {
         @Override
+        //栅栏推到自动调用
         protected boolean onAdvance(int phase, int registeredParties) {
 
             switch (phase) {

@@ -9,8 +9,8 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Thread[] threads = new Thread[100];
 
-        for(int i=0; i<threads.length; i++) {
-            threads[i] = new Thread(()->{
+        for (int i = 0; i < threads.length; i++) {
+            threads[i] = new Thread(() -> {
                 try {
                     lock.lock();
                     for (int j = 0; j < 100; j++) m++;
@@ -20,7 +20,7 @@ public class Main {
             });
         }
 
-        for(Thread t : threads) t.start();
+        for (Thread t : threads) t.start();
 
         for (Thread t : threads) t.join();
 

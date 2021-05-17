@@ -1,8 +1,5 @@
 package com.mashibing.juc.c_023_01_Containers;
 
-import java.util.ArrayDeque;
-import java.util.LinkedList;
-import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;
 

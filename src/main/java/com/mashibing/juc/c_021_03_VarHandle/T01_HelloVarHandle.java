@@ -23,8 +23,8 @@ public class T01_HelloVarHandle {
         T01_HelloVarHandle t = new T01_HelloVarHandle();
 
         //plain read / write
-        System.out.println((int)handle.get(t));
-        handle.set(t,9);
+        System.out.println((int) handle.get(t));
+        handle.set(t, 9);
         System.out.println(t.x);
 
         handle.compareAndSet(t, 9, 10);

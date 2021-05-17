@@ -15,7 +15,8 @@ public class T03_00_cas {
         new Thread(() -> {
 
             for (char c : aI) {
-                while (r != ReadyToRun.T1) {}
+                while (r != ReadyToRun.T1) {
+                }
                 System.out.print(c);
                 r = ReadyToRun.T2;
             }
@@ -25,7 +26,8 @@ public class T03_00_cas {
         new Thread(() -> {
 
             for (char c : aC) {
-                while (r != ReadyToRun.T2) {}
+                while (r != ReadyToRun.T2) {
+                }
                 System.out.print(c);
                 r = ReadyToRun.T1;
             }

@@ -4,7 +4,6 @@ import com.lmax.disruptor.RingBuffer;
 import com.lmax.disruptor.dsl.Disruptor;
 
 import java.nio.ByteBuffer;
-import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 public class Main {
@@ -28,7 +27,7 @@ public class Main {
 
         ByteBuffer bb = ByteBuffer.allocate(8);
 
-        for(long l = 0; l<100; l++) {
+        for (long l = 0; l < 100; l++) {
             bb.putLong(0, l);
 
             producer.onData(bb);

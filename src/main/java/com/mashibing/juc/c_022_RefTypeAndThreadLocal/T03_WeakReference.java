@@ -1,6 +1,5 @@
 /**
  * 弱引用遭到gc就会回收
- *
  */
 package com.mashibing.juc.c_022_RefTypeAndThreadLocal;
 

@@ -19,6 +19,7 @@ public class T09_TestPhaser2 {
 
     public static void main(String[] args) {
 
+        //最开始是七个人在参加 也就是7个线程
         phaser.bulkRegister(7);
 
         for(int i=0; i<5; i++) {
@@ -37,6 +38,7 @@ public class T09_TestPhaser2 {
         @Override
         protected boolean onAdvance(int phase, int registeredParties) {
 
+            //共分4个线程
             switch (phase) {
                 case 0:
                     System.out.println("所有人到齐了！" + registeredParties);
@@ -94,6 +96,7 @@ public class T09_TestPhaser2 {
                 System.out.printf("%s 洞房！\n", name);
                 phaser.arriveAndAwaitAdvance();
             } else {
+                //所有人到期了会执行
                 phaser.arriveAndDeregister();
                 //phaser.register()
             }

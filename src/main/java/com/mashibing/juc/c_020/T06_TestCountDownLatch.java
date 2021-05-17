@@ -2,10 +2,10 @@ package com.mashibing.juc.c_020;
 
 import java.util.concurrent.CountDownLatch;
 
-//CountDownLatch å€’æ•°çš„é—¨æ “
+//CountDownLatch µ¹ÊıµÄÃÅË¨
 public class T06_TestCountDownLatch {
     public static void main(String[] args) {
-        usingJoin();
+//        usingJoin();
         usingCountDownLatch();
     }
 
@@ -17,11 +17,12 @@ public class T06_TestCountDownLatch {
             threads[i] = new Thread(()-> {
                 int result = 0;
                 for (int j = 0; j < 10000; j++) result += j;
-                //æœ‰ä¸ªä¸€ä¸ªçº¿ç¨‹ç»“æŸå‡1 ç±»ä¼¼äººæ»¡å°±èµ°
-                //awaité˜»å¡çš„
-                //æœ¬èº«å°±æ˜¯åŸå­
-                //çº¿ç¨‹ç»“æŸæ‰ä¼šè°ƒè¿™ä¸ªæ–¹æ³•
+                //Ã¿¸öÒ»¸öÏß³Ì½áÊø¼õ1 ÀàËÆÈËÂú¾Í×ß
+                //await×èÈûµÄ
+                //±¾Éí¾ÍÊÇÔ­×Ó
+                //Ïß³Ì½áÊø²Å»áµ÷Õâ¸ö·½·¨
                 latch.countDown();
+                System.out.println("µ±Ç°Ïß³Ì" + Thread.currentThread().getName() + "½áÊø");
             });
         }
 

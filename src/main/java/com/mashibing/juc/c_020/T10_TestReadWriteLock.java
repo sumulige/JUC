@@ -6,6 +6,13 @@ import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
+/**
+ * 读写锁
+ *
+ * @date ：20210517
+ * 共享锁 读 允许其他线程读但不允许写直接上锁
+ * 排他锁 写
+ */
 public class T10_TestReadWriteLock {
     static Lock lock = new ReentrantLock();
     private static int value;
@@ -49,6 +56,7 @@ public class T10_TestReadWriteLock {
         //Runnable writeR = ()->write(lock, new Random().nextInt());
         Runnable writeR = () -> write(writeLock, new Random().nextInt());
 
+//        System.out.println("当前时间"+System.get);
         for (int i = 0; i < 18; i++) new Thread(readR).start();
         for (int i = 0; i < 2; i++) new Thread(writeR).start();
 
